@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.border-default {
+  @apply border border-white/10 shadow-xl;
+}
