@@ -2,9 +2,22 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: "420px",
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-in-out",
+      },
+    },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
     themes: [
       {
@@ -15,7 +28,7 @@ export default {
           "secondary-content": "#fff",
           accent: "#63daf5",
           "accent-content": "#fff",
-          neutral: "#212121",
+          neutral: "#242424",
           "neutral-content": "#fff",
           "base-100": "#101010",
           "base-200": "#181818",
