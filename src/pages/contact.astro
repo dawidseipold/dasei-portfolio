@@ -1,6 +1,7 @@
 ---
 import ContactForm from '../components/contact/form';
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components'
 ---
 
 <Layout title="Dawid Seipold">
@@ -11,7 +12,45 @@ import Layout from '../layouts/Layout.astro';
 			<p class="text-white/75 mb-4 max-w-prose text-lg lg:text-xl">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, doloremque suscipit eum est ducimus quisquam sapiente.
 			</p>
+
+			<ul class="flex md:flex-col gap-x-2 md:gap-y-2">
+				<a href="mailto:mail">
+					<li class="flex gap-x-2 items-center">
+						<Icon name='mail' class='w-12 h-12 lg:w-10 lg:h-10 p-2 rounded-xl border-default' />
+						<span class="hidden md:flex">mail@mail.to</span>
+					</li>
+				</a>
+
+				<a href="https://github.com/dawidseipold">
+					<li class="flex gap-x-2 items-center">
+						<Icon name='github' class='w-12 h-12 lg:w-10 lg:h-10 p-2 rounded-xl border-default' />
+						<span class="hidden md:flex">dawidseipold</span>
+					</li>
+				</a>
+
+				<a href="https://x.com/dawidseipold">
+					<li class="flex gap-x-2 items-center">
+						<Icon name='twitter' class='w-12 h-12 lg:w-10 lg:h-10 p-2 rounded-xl border-default' />
+						<span class="hidden md:flex">dawidseipold</span>
+					</li>
+				</a>
+
+				<a href="https://maps.app.goo.gl/BVBXGgu6KCq7WFui9">
+					<li class="flex gap-x-2 items-center">
+						<Icon name='location' class='w-12 h-12 lg:w-10 lg:h-10 p-2 rounded-xl border-default' />
+						<span class="hidden md:flex">Bydgoszcz, Poland</span>
+					</li>
+				</a>
+
+				<!-- <a href="tel:+48000000">
+					<li class="flex gap-x-2 items-center">
+						<Icon name='phone' class='w-12 h-12 md:w-10 md:h-10 p-2 rounded-xl border-default' />
+						<span class="hidden md:flex">+4800000000</span>
+					</li>
+				</a> -->
+			</ul>
 		</div>
+		
 		<ContactForm client:load />
 	</div>
 </Layout>
