@@ -1,0 +1,53 @@
+---
+import type { Color } from './button.astro';
+import Button from './button.astro';
+import { Icon } from 'astro-icon/components'
+
+interface Page {
+  title: string,
+		href: string,
+		icon: string,
+		color: string
+}
+
+interface Props {
+  pages: Page[],
+  pathname: string;
+}
+
+const { pages, pathname } = Astro.props
+---
+
+
+<nav class='fixed left-1/2 -translate-x-1/2 bottom-6 rounded-3xl p-2.5 bg-base-300/75 border-default flex items-center justify-center gap-x-2.5 shadow-lg backdrop-blur-md'>
+  {pages.map((page) => (
+    <Button href={page.href} title={page.title} color={page.color as Color} active={pathname === page.href} >
+      <Icon name={page.icon} size={20} />
+    </Button>
+  ))}
+
+  <div id="menu-indicator" class="absolute bottom-[3px] w-4 h-1 rounded-full bg-white/25 animate-fadeIn" />
+</nav>
+
+<script>
+	const menu = document.querySelector('nav')
+  const menuElements = document.querySelectorAll('nav button')
+	const activeMenuElement = document.querySelector('[data-active=true]')
+	const menuIndicator = document.getElementById('menu-indicator')
+
+	if (menu && activeMenuElement && menuIndicator) {
+		const activeMenuElementWidth = activeMenuElement.getBoundingClientRect().width
+		const indicatorWidth = menuIndicator.getBoundingClientRect().width
+
+		const menuElementPosition = menu.getBoundingClientRect().left
+		const activeMenuElementPosition = activeMenuElement.getBoundingClientRect().left - menuElementPosition + ((activeMenuElementWidth / 2) - (indicatorWidth / 2)) - 1
+
+		menuIndicator.style.left = `${activeMenuElementPosition}px`
+
+    // menuElements.forEach((element) => {
+    //   element.addEventListener('click', () => {
+    //     menuIndicator.style.left = `${activeMenuElementPosition}px`
+    //   })
+    // })
+	}
+</script>

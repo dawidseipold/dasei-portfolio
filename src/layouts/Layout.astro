@@ -1,10 +1,56 @@
 ---
+import '../styles/base.css'
+import { Icon } from 'astro-icon/components'
+import Button, { type Color } from '../components/nav/button.astro';
+import Menu from '../components/nav/menu.astro';
+
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+
+const pages = [
+	{
+		title: 'Dawid Seipold',
+		href: '/',
+		icon: 'home',
+		color: 'primary'
+	},
+	{
+		title: 'About',
+		href: '/about',
+		icon: 'about',
+		color: 'info'
+	},
+	{
+		title: 'Projects',
+		href: '/projects',
+		icon: 'projects',
+		color: 'warning'
+	},
+	{
+		title: 'Blog',
+		href: '/blog',
+		icon: 'blog',
+		color: 'success'
+	},
+	{
+		title: 'Contact',
+		href: '/contact',
+		icon: 'contact',
+		color: 'error'
+	},
+]
+
+const {pathname} = Astro.url
+
+
+
+
 ---
+
+
 
 <!doctype html>
 <html lang="en">
@@ -16,36 +62,13 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	
+	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-screen justify-center items-center">
+		<div class="max-w-6xl w-full mx-auto">
+			<Menu pages={pages} pathname={pathname} />
+			<!-- <h1 class="text-3xl mb-4 xs:mb-8 md:text-4xl lg:text-5xl lg:mb-12 mx-auto w-max">{title}</h1> -->
+			<slot />
+		</div>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+

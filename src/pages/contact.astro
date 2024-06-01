@@ -1,0 +1,17 @@
+---
+import ContactForm from '../components/contact/form';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dawid Seipold">
+	<div class="flex flex-col gap-y-4 lg:flex-row lg:gap-x-16">
+		<div class="flex flex-col gap-y-4 max-w-prose mx-auto">
+			<h1 class="text-4xl lg:text-6xl font-bold tracking-wide lg:mb-4">Contact</h1>
+			
+			<p class="text-white/75 mb-4 max-w-prose text-lg lg:text-xl">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, doloremque suscipit eum est ducimus quisquam sapiente.
+			</p>
+		</div>
+		<ContactForm client:load />
+	</div>
+</Layout>

@@ -5,3 +5,11 @@
 .border-default {
   @apply border border-white/10 shadow-xl;
 }
+
+.badge-outline {
+  @apply border-white/10;
+}
+
+.btn-outline {
+  @apply border-white/10;
+}
