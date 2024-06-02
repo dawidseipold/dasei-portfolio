@@ -1,7 +1,263 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components'
+
+const skills = [
+	{
+		name: 'HTML',
+		href: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+		icon: 'technologies/html',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+	},
+	{
+		name: 'CSS',
+		href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+		icon: 'technologies/css',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
+		subskills: [
+			{ name: 'TailwindCSS', icon: 'technologies/tailwind', href: 'https://tailwindcss.com' },
+			{ name: 'Sass', icon: 'technologies/sass', href: 'https://sass-lang.com' },
+		]
+	},
+	{
+		name: 'JavaScript',
+		href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+		icon: 'technologies/javascript',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
+		subskills: [
+			{ name: 'TypeScript', icon: 'technologies/typescript', href: 'https://typescriptlang.org' },
+			{ name: 'Astro', icon: 'technologies/astro', href: 'https://astro.build' },
+			{ name: 'Elysia', icon: 'technologies/elysia', href: 'https://elysiajs.com' }
+		]
+	},
+	{
+		name: 'React',
+		href: 'https://react.dev',
+		icon: 'technologies/react',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
+		subskills: [
+			{ name: 'NextJS', icon: 'technologies/nextjs', href: 'https://nextjs.org' },
+		]
+	},
+	{
+		name: 'Svelte',
+		href: 'https://svelte.dev',
+		icon: 'technologies/svelte',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+	},
+	{
+		name: 'Databases',
+		icon: 'technologies/database',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
+		subskills: [
+			{ name: 'MySQL', icon: 'technologies/mysql', href: 'https://mysql.com' },
+			{ name: 'PostgreSQL', icon: 'technologies/postgresql', href: 'https://postgresql.org' },
+			{ name: 'GraphQL', icon: 'technologies/graphql', href: 'https://graphql.org' },
+			{ name: 'RestAPI', icon: 'technologies/restapi', href: 'https://en.wikipedia.org/wiki/REST' },
+		]
+	},
+	{
+		name: 'Version Control',
+		icon: 'technologies/branch',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
+		subskills: [
+			{ name: 'Git', icon: 'technologies/git', href: 'https://git-scm.com'},
+			{ name: 'GitHub', icon: 'technologies/github', href: 'https://github.com' },
+			{ name: 'GitLab', icon: 'technologies/gitlab', href: 'https://gitlab.com' },
+		]
+	}
+]
+
+const jobs = [
+	{
+		title: 'Frontend Developer',
+		company: 'Talem Technologies',
+		logo: {
+			src: 'companies/talem.svg',
+			alt: 'Company Logo'
+		},
+		roles: [
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+		]
+	},
+	{
+		title: 'Frontend Developer',
+		company: 'Talem Technologies',
+		logo: {
+			src: 'companies/talem.svg',
+			alt: 'Company Logo'
+		},
+		roles: [
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+			{
+				title: 'Frontend Developer',
+				date: {
+					start: '2021-01-01',
+					end: '2021-12-31'
+				},
+				description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
+			},
+		]
+	},
+]
+
 ---
 
 <Layout title="Dawid Seipold">
-	ja
+	<section class="prose lg:prose-lg mx-auto">
+		<h1>About Me</h1>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, harum aspernatur? Iste magnam accusamus nihil aspernatur voluptate asperiores corrupti, omnis placeat sit autem, alias perferendis, repellat architecto voluptatem eum ipsam?
+		</p>
+
+		<figure class="overflow-hidden rounded-xl w-full h-64">
+			<img src="/me.jpg" alt="Dawid Seipold" class="w-full h-full object-cover" />
+		</figure>
+
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, harum aspernatur? Iste magnam accusamus nihil aspernatur voluptate asperiores corrupti, omnis placeat sit autem, alias perferendis, repellat architecto voluptatem eum ipsam?
+		</p>
+	</section>
+
+	<section class="flex flex-col gap-y-4 mt-8 mx-auto max-w-prose lg:text-lg">
+		<div class="prose lg:prose-lg mb-4">
+			<h2>Experience</h2>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, quia. Excepturi, ducimus.</p>
+		</div>
+
+		<ul class="not-prose flex flex-col gap-y-2">
+			{skills.map(skill => (
+				<li class="p-4 rounded-2xl border-default flex flex-col gap-y-4">
+					<a href={skill.href && skill.href} class="flex gap-x-2 items-center">
+						<div class="flex justify-center items-center w-8 h-8 min-w-8 rounded-md overflow-hidden">
+
+						<Icon name={skill.icon} class='w-full h-full' />
+						</div>
+
+						<h3 class="text-lg font-semibold">{skill.name}</h3>
+					</a>
+
+					<div class="flex flex-col gap-y-2">
+						<p class="text-white/50 text-sm">
+							{skill.description}
+						</p>
+						
+						{skill.subskills && (
+							<ul class="flex gap-x-2 transition-all mt-2">
+								{skill.subskills.map(subskill => (
+									<a href={subskill.href} class="tooltip" data-tip={subskill.name}>
+										<li class="p-2 border-default rounded-lg">
+											<Icon name={subskill.icon} class="rounded-sm" />
+										</li>
+									</a>
+								))}
+							</ul>
+						)}
+					</div>
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section class="mt-8 mx-auto max-w-prose lg:text-lg">
+		<div class="prose lg:prose-lg mb-4">
+			<h2>Experience</h2>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, quia. Excepturi, ducimus.</p>
+		</div>
+
+		<ul class="flex flex-col gap-y-2 text-md">
+			{jobs.map(job => (
+				<li class="collapse rounded-xl border-default">
+					<input type="checkbox" class="peer" />
+					
+					<div class="!flex gap-x-4 p-4 collapse-title items-start">
+						<figure class="rounded-xl overflow-hidden w-12 h-12 min-w-12 mt-1">
+							<Icon name="companies/talem" class="w-full h-full" />
+						</figure>
+		
+						<div class="flex flex-col prose">
+							<h3 class="text-lg font-semibold mb-0">{job.title}</h3>
+							<span class="flex gap-x-2 text-white/50">
+								{job.company}
+							</span>
+						</div>
+					</div>
+
+					<Icon name="chevron-up" size={24} class="absolute text-white/75 top-4 right-4 rotate-180 peer-checked:rotate-0 group-checked:bg-red-500" />
+
+					<ul class="collapse-content flex flex-col">
+						{job.roles.map(role => (
+							<li class="relative flex mb-4 before:content-[''] before:z-30 before:bg-base-300 before:flex before:rounded-full before:mt-2.5 before:mr-4 before:min-w-2 before:w-2 before:h-2 after:content-[''] after:absolute after:left-0.5 after:top-0 after:rounded-full after:mt-3 after:bg-base-200 after:w-1 after:h-[calc(100%+1rem)] last:after:content-none" data-content="">
+							<div class="flex flex-col gap-y-2 items-start text-start">
+								<div>
+									<h4 class="text-md font-semibold">{role.title}</h4>
+									<span class="flex gap-x-1 text-white/50 text-sm font-semibold">
+										<time>{role.date.start}</time> - <time>{role.date.end}</time>
+									</span>
+								</div>
+
+								<article class="text-white/75 prose">{role.description}
+								</article>
+							</div>
+						</li>
+						))}
+					</ul>
+				</li>
+			))}
+		</ul>
+	</section>
 </Layout>
