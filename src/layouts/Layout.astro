@@ -44,13 +44,7 @@ const pages = [
 ]
 
 const {pathname} = Astro.url
-
-
-
-
 ---
-
-
 
 <!doctype html>
 <html lang="en">
@@ -64,7 +58,7 @@ const {pathname} = Astro.url
 	</head>
 	
 	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-screen justify-center items-center">
-		<div class="max-w-6xl w-full mx-auto">
+		<div class="z-10 max-w-6xl w-full mx-auto">
 			<Menu pages={pages} pathname={pathname} />
 			<!-- <h1 class="text-3xl mb-4 xs:mb-8 md:text-4xl lg:text-5xl lg:mb-12 mx-auto w-max">{title}</h1> -->
 			<slot />

@@ -3,6 +3,35 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Dawid Seipold">
-	index
+	<div class="flex flex-col gap-y-8">
+		<div class="prose lg:prose-lg">
+			<span id="dynamic-text" class="text-secondary font-bold capitalize">frontend developer</span>
+			<h1>Dawid Seipold</h1>
+			<p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint soluta, quasi praesentium dolor dolore numquam consectetur perspiciatis facilis?</p>
+		</div>
+
+		<div class="flex gap-x-2">
+			<a href="/about" class="btn btn-secondary">
+				Learn More
+			</a>
+
+			<a href="/Dawid_Seipold_CV.pdf" class="btn btn-ghost">
+				Resume
+			</a>
+		</div>
+	</div>
+
 </Layout>
 
+<script>
+	const dynamicText = document.getElementById('dynamic-text');
+	const roles = ['frontend developer', 'backend developer', 'software engineer'];
+	let index = 0;
+
+	if (dynamicText) {
+		setInterval(() => {
+			index = (index + 1) % roles.length;
+			dynamicText.textContent = roles[index];
+		}, 3000)
+	}
+</script>
