@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { getAllProjectsTitles, getProjectData } from '../../lib/cosmic'
+import { marked } from 'marked';
+
+export const getStaticPaths = (async () => {
+  const data = await getAllProjectsTitles();
+  
+  return data.map(project => {
+    const slug = project.slug;
+    return {
+      params: { slug }
+    }
+  })
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params
+
+const data = await getProjectData(slug)
+
+const overview = marked.parse( data.metadata.overview)
+const solution = marked.parse( data.metadata.solution)
+const results = marked.parse(data.metadata.results)
+---
+
+<Layout title={slug}>
+  <div class="flex flex-col gap-y-4">
+    <div class="flex justify-between items-center w-full mb-4">
+      <div class="prose lg:prose-lg">
+        <h1 class="mb-0 capitalize">{data.title}</h1>
+      </div>
+
+      <a href="/projects" class="sticky top-4 self-end w-12 h-12 p-2 border-default flex justify-center items-center rounded-xl backdrop-blur-lg bg-base-200/75 hover:bg-base-300">
+        <Icon name="x" size={24} />
+      </a>
+    </div>
+    
+    <figure class="overflow-hidden rounded-2xl lg:rounded-3xl">
+      <img src={data.metadata.cover.imgix_url} alt={data.slug} class="image-full aspect-[3/2] object-cover">
+    </figure>
+  
+    <div class="flex mb-8 items-center">
+      <ul class="gap-x-2 rounded-xl hidden text-sm xs:flex w-full">
+        {data.metadata.tags.map((tag) => (
+          <a href={`/projects?tags=${tag}`} class="border-default rounded-xl py-2 px-3 capitalize">
+            <li>
+              {tag}
+            </li>
+          </a>
+        ))}
+      </ul>
+
+     {(data.metadata.link || data.metadata.repo) && (
+       <ul class="flex gap-x-2 items-center">
+        {data.metadata.repo && (
+          <a href={data.metadata.repo} class="border-default p-2 rounded-xl">
+            <li>
+              <Icon name="github" size={20} />
+            </li>
+          </a>
+        )}
+
+        {data.metadata.link && (
+          <a href={data.metadata.link} class="p-2 border-default rounded-xl">
+            <li>
+              <Icon name="link" size={20} />
+            </li>
+          </a>
+        )}
+      </ul>
+     )}
+    </div>
+      
+    <article class="prose lg:prose-lg mx-auto first-of-type:prose-h2:mt-0">
+      <h2>Overview</h2>
+      <div set:html={overview} />
+
+      <h2>Solution</h2>
+      <div set:html={solution} />
+
+      <h2>Results</h2>
+      <div set:html={results} />
+    </article>
+  </div>
+</Layout>

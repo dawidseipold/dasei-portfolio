@@ -1,37 +1,27 @@
 ---
 import { Icon } from "astro-icon/components";
+import {type ProjectPreviewData} from '../../lib/cosmic'
 
-interface Props {
-  title: string;
-  description: string;
-  tags: string[];
-  image: {
-    src: string;
-    alt: string;
-  }
-  href: {
-    details: string;
-    repo: string;
-    source: string;
-  };
+interface Props extends ProjectPreviewData {
+  
 }
 
 export {type Props as ProjectCardProps};
 
 
-const { title, description, tags, image, href }: Props = Astro.props
+const { title, slug, metadata }: Props = Astro.props
 ---
 
 <div class="bg-base-200 border-default p-4 rounded-3xl">
   <figure class="rounded-xl mb-4 overflow-hidden">
-    <img src={image.src} alt={image.alt}>
+    <img src={metadata.cover.imgix_url} alt={title} class="aspect-[3/2] object-cover">
   </figure>
 
   <div class="flex flex-col gap-y-4">
     <div class="flex justify-between">
       <h2 class="text-2xl">{title}</h2>
       <ul class="gap-x-2 rounded-xl hidden xs:flex">
-        {tags.map((tag) => (
+        {metadata.tags.map((tag) => (
           <li class="badge rounded-xl badge-outline badge-lg p-4 capitalize">
               <a href={`/projects?tag=${tag}`}>{tag}</a>
             </li>
@@ -41,11 +31,11 @@ const { title, description, tags, image, href }: Props = Astro.props
       
     </div>
     
-    <p class="text-neutral-400">{description}</p>
+    <p class="text-neutral-400">{metadata.description}</p>
 
-    <a href={href.details} class="flex items-center gap-x-2 hover:gap-x-3">
+    <a href={`/projects/${slug}`} class="flex items-center gap-x-2 hover:gap-x-3">
       Learn More
-        <Icon name="arrow-right" />
+      <Icon name="arrow-right" />
     </a>
   </div>
 </div>

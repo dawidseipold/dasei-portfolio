@@ -1,52 +1,9 @@
 ---
-import type { ProjectCardProps } from '../../components/projects/card.astro';
 import Card from '../../components/projects/card.astro';
 import Layout from '../../layouts/Layout.astro';
+import { getAllProjectsPreviewData } from '../../lib/cosmic';
 
-const projects: ProjectCardProps[] = [
-  {
-    title: 'Project 1',
-    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image: {
-      src: '/placeholder.png',
-      alt: 'Placeholder image',
-    },
-    href: {
-      details: '/projects/something',
-      repo: 'https://github.com/repo',
-      source: 'https://source.com',
-    },
-    tags: ['tag1', 'tag2'],
-  },
-  {
-    title: 'Project 1',
-    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image: {
-      src: '/placeholder.png',
-      alt: 'Placeholder image',
-    },
-    href: {
-      details: '/projects/else',
-      repo: 'https://github.com/repo',
-      source: 'https://source.com',
-    },
-    tags: ['tag1', 'tag2'],
-  },
-  {
-    title: 'Project 1',
-    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image: {
-      src: '/placeholder.png',
-      alt: 'Placeholder image',
-    },
-    href: {
-      details: '/projects/here',
-      repo: 'https://github.com/repo',
-      source: 'https://source.com',
-    },
-    tags: ['tag1', 'tag2'],
-  },
-]
+const projects = await getAllProjectsPreviewData()
 ---
 
 <Layout title="Projects">
