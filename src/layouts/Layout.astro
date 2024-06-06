@@ -57,12 +57,34 @@ const {pathname} = Astro.url
 		<title>{title}</title>
 	</head>
 	
-	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-screen justify-center items-center">
+	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-screen justify-center items-center font-hind">
 		<div class="z-10 max-w-6xl w-full mx-auto">
 			<Menu pages={pages} pathname={pathname} />
-			<!-- <h1 class="text-3xl mb-4 xs:mb-8 md:text-4xl lg:text-5xl lg:mb-12 mx-auto w-max">{title}</h1> -->
 			<slot />
 		</div>
 	</body>
 </html>
 
+<style>
+	@font-face {
+  font-family: 'Poppins-Variable';
+  src: url('/fonts/poppins/Poppins-Variable.woff2') format('woff2'),
+       url('/fonts/poppins/Poppins-Variable.woff') format('woff'),
+       url('/fonts/poppins/Poppins-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+
+	@font-face {
+		font-family: 'Hind-Variable';
+		src: url('/fonts/hind/Hind-Variable.woff2') format('woff2'),
+				url('/fonts/hind/Hind-Variable.woff') format('woff'),
+				url('/fonts/hind/Hind-Variable.ttf') format('truetype');
+		font-weight: 300 700;
+		font-display: swap;
+		font-style: normal;
+	}
+
+</style>
