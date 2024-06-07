@@ -63,6 +63,7 @@ interface JobData {
   metadata: {
     job_title: string;
     company: string;
+    company_slug: string;
     company_website: string;
     location: string;
     roles: Role[];
@@ -148,6 +149,7 @@ export async function getJobsData() {
       "metadata.job_title",
       "metadata.company",
       "metadata.company_website",
+      "metadata.company_slug",
       "metadata.location",
       "metadata.roles.metadata.role_title",
       "metadata.roles.metadata.description",
