@@ -1,7 +1,5 @@
 ---
 import '../styles/base.css'
-import { Icon } from 'astro-icon/components'
-import Button, { type Color } from '../components/nav/button.astro';
 import Menu from '../components/nav/menu.astro';
 
 interface Props {
@@ -49,12 +47,31 @@ const {pathname} = Astro.url
 <!doctype html>
 <html lang="en">
 	<head>
+		<title>{title}</title>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
+		<meta name="keywords" content="Astro, Astro Framework, Astro Meta Tags" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+
+		<!-- Open Graph Meta -->
+		<meta property="og:title" content="Dawid Seipold" />
+		<meta property="og:description" content="Astro description" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content="/og-image.jpg" />
+		<meta property="og:site_name" content="Dawid Seipold" />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter Meta -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@dawidseipold" />
+		<meta name="twitter:creator" content="@dawidseipold" />
+		<meta name="twitter:title" content="Dawid Seipold" />
+		<meta name="twitter:description" content="Astro description" />
+		<meta name="twitter:image" content="/og-image.jpg" />
 	</head>
 	
 	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-screen justify-center items-center font-hind">

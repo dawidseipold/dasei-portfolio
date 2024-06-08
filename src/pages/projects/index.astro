@@ -6,7 +6,7 @@ import { getAllProjectsPreviewData } from '../../lib/cosmic';
 const projects = await getAllProjectsPreviewData()
 ---
 
-<Layout title="Projects">
+<Layout title="Projects - Dawid Seipold">
   <div class="flex flex-col gap-y-4 md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-x-4">
     {projects.map((project) => (
       <Card {...project} />
