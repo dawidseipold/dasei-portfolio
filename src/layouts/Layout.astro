@@ -42,6 +42,8 @@ const pages = [
 ]
 
 const {pathname} = Astro.url
+
+const metaDescription = 'Experienced Frontend Developer with expertise in React, Svelte and NextJS. Passionate about exploring new technologies and contributing to impactful projects. Enthusiastic about Backend Development.'
 ---
 
 <!doctype html>
@@ -49,8 +51,8 @@ const {pathname} = Astro.url
 	<head>
 		<title>{title}</title>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="keywords" content="Astro, Astro Framework, Astro Meta Tags" />
+		<meta name="description" content={metaDescription} />
+		<meta name="keywords" content="portfolio, webdeveloper, frontend" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -58,9 +60,9 @@ const {pathname} = Astro.url
 
 		<!-- Open Graph Meta -->
 		<meta property="og:title" content="Dawid Seipold" />
-		<meta property="og:description" content="Astro description" />
+		<meta property="og:description" content={metaDescription} />
 		<meta property="og:url" content={Astro.url} />
-		<meta property="og:image" content="/og-image.jpg" />
+		<meta property="og:image" content="/preview.png" />
 		<meta property="og:site_name" content="Dawid Seipold" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="en_US" />
@@ -71,7 +73,7 @@ const {pathname} = Astro.url
 		<meta name="twitter:creator" content="@dawidseipold" />
 		<meta name="twitter:title" content="Dawid Seipold" />
 		<meta name="twitter:description" content="Astro description" />
-		<meta name="twitter:image" content="/og-image.jpg" />
+		<meta name="twitter:image" content="/preview.png" />
 	</head>
 	
 	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-screen justify-center items-center font-hind">
