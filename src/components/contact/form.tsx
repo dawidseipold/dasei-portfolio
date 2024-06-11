@@ -12,7 +12,7 @@ const ContactForm = () => {
       message: "",
     },
     onSubmit: async (values) => {
-      const result = await fetch("/api/emails/send-message", {
+      const result = await fetch("/api/emails/send-message.json", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,11 +20,14 @@ const ContactForm = () => {
         body: JSON.stringify(values.value),
       });
 
-      if (result.ok) {
-        alert("Message sent successfully!");
-      } else {
+      console.log(values.value);
+
+      if (!result.ok) {
         alert("An error occurred while sending the message");
+        return;
       }
+
+      alert("Message sent successfully!");
     },
     validatorAdapter: zodValidator,
   });

@@ -7,24 +7,36 @@ interface ContactFormValues {
   message: string;
 }
 
-export async function POST({ params }: { params: ContactFormValues }) {
+export async function POST({
+  params,
+  request,
+}: {
+  params: ContactFormValues;
+  request: ContactFormValues;
+}) {
   const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
   const { data, error } = await resend.emails.send({
-    from: "Dawid Seipold <no-reply@dawidseipold.dev>",
-    to: [params.email],
-    subject: `Dawid Seipold - ${params.topic}`,
+    from: "Dawid Seipold <no-reply@dawidseipold.com>",
+    to: [request.email],
+    subject: `Dawid Seipold - ${request.topic}`,
     html: `
-      <h1>Hi ${params.name},</h1>
+      <h1>Hi ${request.name},</h1>
       Thanks for contacting me! I'll get back to you as soon as possible.
 
-      Greetings, Dawid Seipold!
+      Greetings, <b>Dawid Seipold<b>!
     `,
   });
 
   if (error) {
-    return { status: 500, body: { error } };
+    return new Response(JSON.stringify({ error }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
-  return { status: 200, body: { data } };
+  return new Response(JSON.stringify({ data }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
