@@ -1,6 +1,5 @@
 import { useForm } from "@tanstack/react-form";
 import { zodValidator } from "@tanstack/zod-form-adapter";
-import { Resend } from "resend";
 import { z } from "zod";
 
 const ContactForm = () => {
@@ -12,22 +11,32 @@ const ContactForm = () => {
       message: "",
     },
     onSubmit: async (values) => {
-      const result = await fetch("/api/emails/send-message.json", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values.value),
-      });
+      const formData = {
+        topic: values.value.topic,
+        name: values.value.name,
+        email: values.value.email,
+        message: values.value.message,
+      };
 
-      console.log(values.value);
+      const result = await fetch(
+        `/api/emails/send-message?data=${encodeURIComponent(
+          JSON.stringify(formData)
+        )}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!result.ok) {
         alert("An error occurred while sending the message");
         return;
       }
 
-      alert("Message sent successfully!");
+      alert("Message sent successfully");
     },
     validatorAdapter: zodValidator,
   });
