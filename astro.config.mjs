@@ -15,4 +15,5 @@ export default defineConfig({
       experimentalReactChildren: true,
     }),
   ],
+  output: "hybrid",
 });
