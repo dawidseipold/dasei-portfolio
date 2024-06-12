@@ -17,7 +17,7 @@ const normalizeTopic = (topic: string) => {
 export const POST: APIRoute = async ({ request }: { request: Request }) => {
   // TEMPORARY SOLUTION UNTIL ASTRO FIXES DATA PARSING
   let body = JSON.parse(
-    Object.fromEntries(new URL(await request.url).searchParams).data
+    Object.fromEntries(new URL(request.url).searchParams).data
   ) as ContactFormValues;
 
   const resend = new Resend(import.meta.env.RESEND_API_KEY);

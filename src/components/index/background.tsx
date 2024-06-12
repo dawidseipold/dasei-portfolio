@@ -1,5 +1,5 @@
 import Spline from "@splinetool/react-spline";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import React from "react";
 
 const Background = () => {
