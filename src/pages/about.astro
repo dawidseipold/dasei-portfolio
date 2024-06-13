@@ -11,7 +11,7 @@ const formatDate = (date: Date) => {
 const skills = await getSkillsData()
 const jobs = await getJobsData()
 ---
-<Layout title="About - Dawid Seipold">
+<Layout title="About - Dawid Seipold" description='Dawid Seipold, a Frontend Developer based in Bydgoszcz, passionate about creating functional and enjoyable digital experiences. Exploring backend development and coding in C++. Outside of coding, I enjoy powerlifting, mountain biking, and trading. Always seeking new challenges and ways to improve skills.'>
 	<section class="prose lg:prose-lg mx-auto">
 		<h1>About Me</h1>
 		<p>
@@ -38,7 +38,7 @@ const jobs = await getJobsData()
 		<ul class="not-prose flex flex-col gap-y-2">
 			{skills.map(skill => (
 				<li class="p-4 rounded-2xl border-default flex flex-col gap-y-4">
-					<a href={skill.metadata.website && skill.metadata.website} class="flex gap-x-2 items-center">
+					<a href={skill.metadata.website && skill.metadata.website} target="_blank" rel="noopener noreferrer" class="flex gap-x-2 items-center">
 						<div class="flex justify-center items-center w-8 h-8 min-w-8 rounded-md overflow-hidden">
 
 						<Icon name={`technologies/${skill.slug}`} class='w-full h-full' />
@@ -55,7 +55,7 @@ const jobs = await getJobsData()
 						{skill.metadata.subskills && (
 							<ul class="flex gap-x-2 transition-all mt-2">
 								{skill.metadata.subskills.map(subskill => (
-									<a href={subskill.metadata.website && subskill.metadata.website} class="tooltip" data-tip={subskill.title}>
+									<a href={subskill.metadata.website && subskill.metadata.website} target="_blank" rel="noopener noreferrer" class="tooltip" data-tip={subskill.title}>
 										<li class="p-2 border-default rounded-lg">
 											<Icon name={`technologies/${subskill.slug}`} class="rounded-sm" />
 										</li>
@@ -87,7 +87,7 @@ const jobs = await getJobsData()
 		
 						<div class="flex flex-col prose">
 							<h3 class="text-lg font-semibold mb-0">{job.metadata.job_title}</h3>
-							<a href={job.metadata.company_website && job.metadata.company_website} class="z-10 flex gap-x-2 text-white/50">
+							<a href={job.metadata.company_website && job.metadata.company_website} target="_blank" rel="noopener noreferrer" class="z-10 flex gap-x-2 text-white/50">
 								{job.metadata.company}
 							</a>
 						</div>

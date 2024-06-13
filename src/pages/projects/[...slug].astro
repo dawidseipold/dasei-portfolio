@@ -25,7 +25,7 @@ const solution = marked.parse( data.metadata.solution)
 const results = marked.parse(data.metadata.results)
 ---
 
-<Layout title={`${slug} - Dawid Seipold`}>
+<Layout title={`${slug} - Dawid Seipold`} description={data.metadata.description}>
   <div class="flex flex-col gap-y-4">
     <div class="flex justify-between items-center w-full mb-4">
       <div class="prose lg:prose-lg">

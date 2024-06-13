@@ -1,12 +1,14 @@
 ---
 import '../styles/base.css'
 import Menu from '../components/nav/menu.astro';
+import Footer from '../components/footer/footer.astro';
 
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 
 const pages = [
 	{
@@ -51,7 +53,7 @@ const metaDescription = 'Experienced Frontend Developer with expertise in React,
 	<head>
 		<title>{title}</title>
 		<meta charset="UTF-8" />
-		<meta name="description" content={metaDescription} />
+		<meta name="description" content={description} />
 		<meta name="keywords" content="portfolio, webdeveloper, frontend" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -72,14 +74,17 @@ const metaDescription = 'Experienced Frontend Developer with expertise in React,
 		<meta name="twitter:site" content="@dawidseipold" />
 		<meta name="twitter:creator" content="@dawidseipold" />
 		<meta name="twitter:title" content="Dawid Seipold" />
-		<meta name="twitter:description" content="Astro description" />
+		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:image" content="/preview.png" />
 	</head>
 	
 	<body class="p-4 pb-28 xs:p-8 xs:pb-28 flex min-h-[100dvh] justify-center items-center font-hind">
 		<div class="z-10 max-w-6xl w-full mx-auto">
 			<Menu pages={pages} pathname={pathname} />
+
 			<slot />
+
+			<Footer />
 		</div>
 	</body>
 </html>
@@ -105,5 +110,4 @@ const metaDescription = 'Experienced Frontend Developer with expertise in React,
 		font-display: swap;
 		font-style: normal;
 	}
-
 </style>

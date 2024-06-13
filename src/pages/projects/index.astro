@@ -6,7 +6,7 @@ import { getAllProjectsPreviewData } from '../../lib/cosmic';
 const projects = await getAllProjectsPreviewData()
 ---
 
-<Layout title="Projects - Dawid Seipold">
+<Layout title="Projects - Dawid Seipold" description='Discover the projects of Dawid Seipold, a Frontend Developer skilled in creating functional and enjoyable digital experiences. Explore my portfolio showcasing frontend development, backend experiments, and C++ coding.'>
   <div class="flex flex-col gap-y-4 md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-x-4">
     {projects.map((project) => (
       <Card {...project} />
