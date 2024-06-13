@@ -27,6 +27,7 @@ export interface ProjectData {
     solution: string;
     results: string;
     tags: string[];
+    description: string;
   };
 }
 
@@ -117,6 +118,7 @@ export async function getProjectData(slug: string) {
       "metadata.solution",
       "metadata.results",
       "metadata.tags",
+      "metadata.description",
     ]);
 
   return data.object as ProjectData;

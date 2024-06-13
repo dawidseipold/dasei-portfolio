@@ -6,14 +6,16 @@ const ContactForm = () => {
   const form = useForm({
     defaultValues: {
       topic: "select",
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       message: "",
     },
     onSubmit: async (values) => {
       const formData = {
         topic: values.value.topic,
-        name: values.value.name,
+        firstName: values.value.firstName,
+        lastName: values.value.lastName,
         email: values.value.email,
         message: values.value.message,
       };
@@ -61,7 +63,7 @@ const ContactForm = () => {
         }}
         children={(field) => (
           <label className="form-control">
-            <span className="label capitalize">{field.name}</span>
+            <span className="label capitalize tracking-wide">{field.name}</span>
 
             <select
               className="select border-default"
@@ -89,22 +91,28 @@ const ContactForm = () => {
 
       <div className="flex flex-col gap-y-4 md:flex-row gap-x-4 w-full">
         <form.Field
-          name="name"
+          name="firstName"
           validators={{
-            onBlur: z.string().min(1, "Name is required"),
+            onBlur: z.string().min(1, "First name is required"),
           }}
           children={(field) => (
             <label className="form-control w-full">
-              <span className="label capitalize">{field.name}</span>
+              <span className="label capitalize flex justify-start gap-x-1 tracking-wide">
+                {field.name.split(/(?=[A-Z])/).map((word, index) => (
+                  <span key={index}>{word}</span>
+                ))}
+              </span>
+
               <input
                 className="input border-default"
                 type="text"
-                placeholder="Your Name"
+                placeholder="Your First Name"
                 name={field.name}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
               />
+
               {field.state.meta.errors && (
                 <span className="text-error mt-2 font-semibold">
                   {field.state.meta.errors[0]}
@@ -114,41 +122,70 @@ const ContactForm = () => {
           )}
         />
         <form.Field
-          name="email"
+          name="lastName"
           validators={{
-            onBlur: z
-              .string()
-              .min(1, "Email is required")
-              .email("Invalid email"),
+            onBlur: z.string().min(1, "Last name is required"),
           }}
           children={(field) => (
             <label className="form-control w-full">
-              <span className="label capitalize">{field.name}</span>
+              <span className="label capitalize flex justify-start gap-x-1 tracking-wide">
+                {field.name.split(/(?=[A-Z])/).map((word, index) => (
+                  <span key={index}>{word}</span>
+                ))}
+              </span>
+
               <input
                 className="input border-default"
-                type="email"
-                placeholder="Email"
+                type="text"
+                placeholder="Your Last Name"
                 name={field.name}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
               />
+
               {field.state.meta.errors && (
-                <div className="mt-2 flex flex-col gap-y-1">
-                  {field.state.meta.errors
-                    .join(", ")
-                    .split(", ")
-                    .map((err, index) => (
-                      <span key={index} className="text-error font-semibold">
-                        {err}
-                      </span>
-                    ))}
-                </div>
+                <span className="text-error mt-2 font-semibold">
+                  {field.state.meta.errors[0]}
+                </span>
               )}
             </label>
           )}
         />
       </div>
+
+      <form.Field
+        name="email"
+        validators={{
+          onBlur: z.string().min(1, "Email is required").email("Invalid email"),
+        }}
+        children={(field) => (
+          <label className="form-control w-full">
+            <span className="label capitalize tracking-wide">{field.name}</span>
+            <input
+              className="input border-default"
+              type="email"
+              placeholder="Your Email"
+              name={field.name}
+              value={field.state.value}
+              onBlur={field.handleBlur}
+              onChange={(e) => field.handleChange(e.target.value)}
+            />
+            {field.state.meta.errors && (
+              <div className="mt-2 flex flex-col gap-y-1">
+                {field.state.meta.errors
+                  .join(", ")
+                  .split(", ")
+                  .map((err, index) => (
+                    <span key={index} className="text-error font-semibold">
+                      {err}
+                    </span>
+                  ))}
+              </div>
+            )}
+          </label>
+        )}
+      />
 
       <form.Field
         name="message"
@@ -160,7 +197,7 @@ const ContactForm = () => {
         }}
         children={(field) => (
           <label className="form-control">
-            <span className="label capitalize">{field.name}</span>
+            <span className="label capitalize tracking-wide">{field.name}</span>
 
             <textarea
               className="textarea border-default min-h-48"
@@ -187,7 +224,7 @@ const ContactForm = () => {
         )}
       />
 
-      <button className="btn btn-neutral mt-2" type="submit">
+      <button className="btn btn-neutral mt-2 tracking-wide" type="submit">
         Send
       </button>
     </form>
