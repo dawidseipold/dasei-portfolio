@@ -27,7 +27,9 @@ export const POST: APIRoute = async ({ request }: { request: Request }) => {
     reply_to: body.email,
     from: `${body.email} <${body.topic}@dawidseipold.com>`,
     to: ["contact@dawidseipold.com"],
-    subject: `Dawid Seipold - ${normalizeTopic(body.topic)}`,
+    subject: `${body.firstName} ${body.lastName} - ${normalizeTopic(
+      body.topic
+    )}`,
     html: `
       <h1>${normalizeTopic(body.topic)}</h1>
       <p>Name: ${body.firstName} ${body.lastName}</p>
