@@ -64,6 +64,10 @@ interface JobData {
   metadata: {
     job_title: string;
     company: string;
+    company_logo: {
+      url: string;
+      imgix_url: string;
+    },
     company_slug: string;
     company_website: string;
     location: string;
@@ -150,6 +154,7 @@ export async function getJobsData() {
     .props([
       "metadata.job_title",
       "metadata.company",
+      "metadata.company_logo",
       "metadata.company_website",
       "metadata.company_slug",
       "metadata.location",
