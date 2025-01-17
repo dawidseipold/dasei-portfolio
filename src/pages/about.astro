@@ -81,9 +81,7 @@ const jobs = await getJobsData()
 					<input type="checkbox" class="peer" />
 					
 					<div class="!flex gap-x-4 p-4 collapse-title items-start">
-						<figure class="rounded-xl overflow-hidden w-12 h-12 min-w-12 mt-1">
-							<Icon name={`companies/${job.metadata.company_slug}`} class="w-full h-full" />
-						</figure>
+            <img src={job.metadata.company_logo.imgix_url} alt={`${job.metadata.company} logo`} class="rounded-xl overflow-hidden w-12 h-12 min-w-12 mt-1" />
 		
 						<div class="flex flex-col prose">
 							<h3 class="text-lg font-semibold mb-0">{job.metadata.job_title}</h3>
